@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    
+    /* Light Mode - Premium Corporate */
+    --background: 0 0% 100%;
+    --foreground: 215 28% 17%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+    
+    /* Deep Royal Blue Primary */
+    --primary: 215 50% 23%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Vibrant Red Secondary/Accent */
+    --secondary: 4 84% 50%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Amber Accent */
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 10%;
+    
+    /* Muted Slate */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 215 50% 23%;
+    
+    --radius: 0.75rem;
+    
+    /* Glass effects - Light */
+    --glass-bg: 255 255 255 / 0.7;
+    --glass-border: 255 255 255 / 0.3;
+    --glass-blur: 20px;
+    
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Mode - Futuristic Navy */
+    --background: 222 47% 11%;
+    --foreground: 214 32% 91%;
+    
+    --card: 222 47% 13%;
+    --card-foreground: 214 32% 91%;
+    
+    --popover: 222 47% 13%;
+    --popover-foreground: 214 32% 91%;
+    
+    /* Lighter Blue for Dark Mode */
+    --primary: 210 40% 70%;
+    --primary-foreground: 222 47% 11%;
+    
+    /* Neon/Glow Red */
+    --secondary: 4 90% 58%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Brighter Amber */
+    --accent: 38 95% 55%;
+    --accent-foreground: 0 0% 10%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 210 40% 70%;
+    
+    /* Glass effects - Dark */
+    --glass-bg: 15 23 42 / 0.8;
+    --glass-border: 255 255 255 / 0.1;
+    --glass-blur: 24px;
+    
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 214 32% 91%;
+    --sidebar-primary: 210 40% 70%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 214 32% 91%;
+    --sidebar-border: 217 33% 20%;
+    --sidebar-ring: 210 40% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-300;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl border shadow-xl;
+    background: rgba(var(--glass-bg));
+    border-color: rgba(var(--glass-border));
+  }
+  
+  .glass-navbar {
+    @apply backdrop-blur-2xl border-b;
+    background: hsl(var(--background) / 0.8);
+    border-color: hsl(var(--border) / 0.5);
+  }
+  
+  .section-padding {
+    @apply py-20 md:py-24 lg:py-28;
+  }
+  
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-secondary px-8 py-3 text-sm font-semibold text-secondary-foreground shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 10px 40px -10px hsl(var(--secondary) / 0.5);
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-primary px-8 py-3 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--secondary) / 0.5), 0 0 40px hsl(var(--secondary) / 0.3);
+  }
+
+  .dark .glow-card {
+    box-shadow: 0 0 30px -10px hsl(var(--secondary) / 0.3);
+  }
+
+  .dark .glow-border:hover {
+    box-shadow: 0 0 20px -5px hsl(var(--secondary) / 0.4), inset 0 0 20px -10px hsl(var(--secondary) / 0.2);
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  
+  .animate-marquee-reverse {
+    animation: marquee-reverse 30s linear infinite;
+  }
+  
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  
+  @keyframes marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
+  .line-fill {
+    background: linear-gradient(to bottom, hsl(var(--secondary)) var(--progress, 0%), hsl(var(--border)) var(--progress, 0%));
+  }
+}
